@@ -1,0 +1,5 @@
+{
+  "name": "CNS - Chinese Restaurant",
+  "description": "Premium authentic Chinese dining experience in DHA Phase 5, Karachi. Authentic flavors, elegant ambiance, and exceptional service.",
+  "requestFramePermissions": ["geolocation"]
+}
