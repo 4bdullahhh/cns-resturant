@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Star, ArrowRight, Utensils, Clock, MapPin, Phone } from 'lucide-react';
+import { Star, ArrowRight, Utensils, Clock, MapPin, Quote } from 'lucide-react';
 import { MENU_ITEMS, REVIEWS } from '../constants';
 import { cn } from '../lib/utils';
 
@@ -14,12 +14,12 @@ const Home: React.FC = () => {
       <section className="relative h-screen flex items-center justify-center px-6 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://picsum.photos/seed/hero/1920/1080?blur=2"
-            alt="Hero Background"
-            className="w-full h-full object-cover opacity-40"
+            src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?q=80&w=2000&auto=format&fit=crop"
+            alt="Premium Chinese Food"
+            className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/40 to-ink"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-bg/80 via-bg/40 to-bg"></div>
         </div>
 
         <div className="relative z-10 text-center max-w-4xl mx-auto">
@@ -46,9 +46,18 @@ const Home: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-lg md:text-xl text-paper/70 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-text/70 mb-4 max-w-2xl mx-auto leading-relaxed"
           >
             Experience the true essence of premium Szechuan and Cantonese cuisine in the heart of DHA Phase 5.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-gold font-serif italic text-sm md:text-base mb-12 tracking-wide"
+          >
+            "Tradition in every bite, excellence in every detail."
           </motion.p>
 
           <motion.div
@@ -59,13 +68,13 @@ const Home: React.FC = () => {
           >
             <Link
               to="/menu"
-              className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-ink px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl shadow-gold/20"
+              className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-white px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-xl shadow-gold/20"
             >
               View Menu
             </Link>
             <Link
               to="/reservation"
-              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-paper px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-text px-10 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
             >
               Reserve Table
             </Link>
@@ -84,34 +93,34 @@ const Home: React.FC = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-6 md:px-12 bg-ink border-y border-white/5">
+      <section className="py-20 px-6 md:px-12 bg-bg border-y border-border">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
           <div className="space-y-4">
             <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto text-gold">
               <Utensils size={32} />
             </div>
             <h3 className="text-2xl font-serif font-bold">Premium Quality</h3>
-            <p className="text-paper/60">Fresh ingredients sourced daily for authentic taste.</p>
+            <p className="text-text/60">Fresh ingredients sourced daily for authentic taste.</p>
           </div>
           <div className="space-y-4">
             <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto text-gold">
               <Clock size={32} />
             </div>
             <h3 className="text-2xl font-serif font-bold">Open Daily</h3>
-            <p className="text-paper/60">Serving you from 12:00 PM to 12:00 AM every day.</p>
+            <p className="text-text/60">Serving you from 12:00 PM to 12:00 AM every day.</p>
           </div>
           <div className="space-y-4">
             <div className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center mx-auto text-gold">
               <MapPin size={32} />
             </div>
             <h3 className="text-2xl font-serif font-bold">DHA Phase 5</h3>
-            <p className="text-paper/60">Located in the heart of Karachi's premium dining hub.</p>
+            <p className="text-text/60">Located in the heart of Karachi's premium dining hub.</p>
           </div>
         </div>
       </section>
 
       {/* Featured Dishes */}
-      <section className="py-32 px-6 md:px-12">
+      <section className="py-32 px-6 md:px-12 bg-bg">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
@@ -146,10 +155,10 @@ const Home: React.FC = () => {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-serif font-bold mb-3 group-hover:text-gold transition-colors">{dish.name}</h3>
-                  <p className="text-paper/60 mb-6 line-clamp-2">{dish.description}</p>
+                  <p className="text-text/60 mb-6 line-clamp-2">{dish.description}</p>
                   <div className="flex items-center justify-between">
                     <span className="text-gold font-bold text-xl">PKR {dish.price}</span>
-                    <Link to="/order" className="p-3 bg-white/5 hover:bg-gold hover:text-ink rounded-full transition-all duration-300">
+                    <Link to="/order" className="p-3 bg-white/5 hover:bg-gold hover:text-white rounded-full transition-all duration-300">
                       <ArrowRight size={20} />
                     </Link>
                   </div>
@@ -160,8 +169,30 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* Professional Quote Section */}
+      <section className="py-20 px-6 md:px-12 bg-bg relative border-t border-border/50">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            <Quote className="absolute -top-6 -left-4 text-gold/10 w-12 h-12 -z-0" />
+            <h2 className="text-xl md:text-2xl font-serif italic font-medium leading-relaxed relative z-10 text-text/80">
+              "Authenticity is the soul of our kitchen. We honor the heritage of Chinese cuisine with every plate we serve."
+            </h2>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <div className="w-8 h-px bg-gold/20"></div>
+              <span className="text-gold font-bold uppercase tracking-[0.2em] text-[10px]">Executive Chef</span>
+              <div className="w-8 h-px bg-gold/20"></div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Testimonials */}
-      <section className="py-32 px-6 md:px-12 bg-black relative">
+      <section className="py-32 px-6 md:px-12 bg-bg relative">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-chinese-red rounded-full blur-[120px]"></div>
         </div>
@@ -187,18 +218,18 @@ const Home: React.FC = () => {
                     <Star
                       key={i}
                       size={16}
-                      className={cn(i < review.rating ? "text-gold fill-gold" : "text-white/10")}
+                      className={cn(i < review.rating ? "text-gold fill-gold" : "text-text/10")}
                     />
                   ))}
                 </div>
-                <p className="text-paper/80 italic text-lg mb-8 leading-relaxed">"{review.comment}"</p>
+                <p className="text-text/80 italic text-lg mb-8 leading-relaxed">"{review.comment}"</p>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center text-gold font-bold">
                     {review.author[0]}
                   </div>
                   <div>
-                    <h5 className="font-bold text-paper">{review.author}</h5>
-                    <p className="text-paper/40 text-sm">Verified Guest</p>
+                    <h5 className="font-bold text-text">{review.author}</h5>
+                    <p className="text-text/40 text-sm">Verified Guest</p>
                   </div>
                 </div>
               </motion.div>
@@ -208,19 +239,19 @@ const Home: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6 md:px-12">
+      <section className="py-32 px-6 md:px-12 bg-bg">
         <div className="max-w-5xl mx-auto glass-card rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-gold/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
           <div className="absolute bottom-0 left-0 w-64 h-64 bg-chinese-red/10 rounded-full blur-3xl -ml-32 -mb-32"></div>
           
           <h2 className="text-4xl md:text-6xl font-serif font-bold mb-8 relative z-10">Ready for an <span className="gold-gradient">Unforgettable</span> Meal?</h2>
-          <p className="text-xl text-paper/70 mb-12 max-w-2xl mx-auto relative z-10">
+          <p className="text-xl text-text/70 mb-12 max-w-2xl mx-auto relative z-10">
             Book your table now or order online to enjoy the finest Chinese cuisine in Karachi.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 relative z-10">
             <Link
               to="/reservation"
-              className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-ink px-12 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto bg-gold hover:bg-gold-dark text-white px-12 py-4 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105"
             >
               Book a Table
             </Link>

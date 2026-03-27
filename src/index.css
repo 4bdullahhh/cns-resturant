@@ -8,13 +8,35 @@
   --color-gold: #d4af37;
   --color-gold-dark: #b8860b;
   --color-chinese-red: #c41e3a;
-  --color-ink: #0a0a0a;
-  --color-paper: #f5f5f5;
+  
+  /* Theme-aware colors */
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-card-bg: var(--card-bg);
+  --color-border: var(--border);
+  
+  /* Aliases for existing components */
+  --color-ink: var(--bg);
+  --color-paper: var(--text);
+}
+
+:root {
+  --bg: #ffffff;
+  --text: #0a0a0a;
+  --card-bg: rgba(0, 0, 0, 0.03);
+  --border: rgba(0, 0, 0, 0.1);
+}
+
+.dark {
+  --bg: #0a0a0a;
+  --text: #f5f5f5;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 @layer base {
   body {
-    @apply bg-ink text-paper font-sans antialiased;
+    @apply bg-bg text-text font-sans antialiased transition-colors duration-500;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -37,7 +59,7 @@
 }
 
 .glass-card {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  @apply bg-card-bg backdrop-blur-md border border-border;
 }
 
 .nav-link {
@@ -51,4 +73,12 @@
 
 .nav-link:hover::after {
   @apply w-full;
+}
+
+.floating-nav {
+  @apply fixed top-6 left-1/2 -translate-x-1/2 w-[90%] max-w-6xl z-50 rounded-full px-8 py-3 bg-card-bg backdrop-blur-md border border-border transition-all duration-500;
+}
+
+.floating-nav.scrolled {
+  @apply top-4 w-[95%] shadow-2xl shadow-black/20;
 }
